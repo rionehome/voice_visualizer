@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>チャットアプリをつくってみよう</title>
+    <style>
+        * {margin:0; padding:0; box-sizing:border-box; }
+        body { background: #96d7ed; font-size: 14px; max-width: 600px; width: 100%; margin: 0 auto; padding: 0 15px; position: relative; }
+        #chatSend { padding: 3px 15px; position: fixed; bottom: 5px; width: 100%; max-width: 600px; }
+        #chatText { border: 2px solid #ccc; padding: 10px; width: 90%; margin-right: .5%; border-radius: 5px; }
+        #sendButton { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; border-radius: 5px; }
+        #msg-whole { height: 50%; width: 80%; border: 2px white dashed; margin: 0 auto; margin-top: 20px; overflow: auto; padding: 10px; }
+        .my-msg { border: 2px white solid; line-height: 40px; border-radius: 15px; min-width: 100px; max-width: 50%; display: inline-block; margin: 10px; padding-left: 10px; padding-right: 10px; font-size: 20px; position: relative; word-wrap: break-word; background: #96ed9e;}
+        .other-msg { border: 2px white solid; line-height: 40px; border-radius: 15px; min-width: 100px; max-width: 50%; display: inline-block; margin: 10px; padding-left: 10px; padding-right: 10px; font-size: 20px; position: relative; word-wrap: break-word; background: #96d7ed;}
+    </style>
+</head>
+<body>
+  <h1>チャットアプリをつくってみよう</h1>
+  <div id="msg-whole"></div>
+
+  <form id="chatSend" action="">
+      <input id="chatText" autocomplete="off"><button id="sendButton">送信</button>
+  </form>
+  <!-- scriptの処理を追加 -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script>
+      $(function () {
+          var socket = io();
+          $('form').submit(function(){
+              socket.emit('message', $('#chatText').val());
+              $('#chatText').val('');
+              return false;
+          });
+          socket.on('other-message', function(msg){
+              $('#msg-whole').append("<div style='text-align: left'><div class='other-msg'><span>" + msg + "</span></div></div></br>");
+          });
+          socket.on('message', function(msg){
+              $('#msg-whole').append("<div style='text-align: right'><div class='my-msg'><span>" + msg + "</span></div></div></br>");
+          });
+      });
+  </script>
+</body>
+</html>

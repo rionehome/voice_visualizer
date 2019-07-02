@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="rosnodejs_sample" type="talker.js" name="talker" output="screen" />
+</launch>

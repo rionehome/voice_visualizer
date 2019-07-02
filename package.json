@@ -1,0 +1,16 @@
+{
+  "name": "voice_visalizer",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "express": "^4.17.1",
+    "rosnodejs": "^3.0.0",
+    "socket.io": "^2.2.0"
+  },
+  "scripts": {
+    "talker": "node scripts/talker.js",
+    "listener": "node scripts/listener.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
