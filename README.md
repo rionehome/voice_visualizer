@@ -1,35 +1,25 @@
-# rosnodejs sample
+# voice visualizer
+this is a sample code for visualize result of voice recognition and response
 
 ## setup
 ```
 $ cd ~/catkin_ws/src
-$ git clone https://github.com/nakano16180/rosnodejs_sample.git
+$ git clone https://github.com/rionehome/voice_visualizer.git
 $ cd ~/catkin_ws && catkin_make
 ```
 
 ## run
-example1
-```
-#terminal A
-$ roscore
-
-#terminal B
-$ rosrun rosnodejs_sample talker.js
-
-#terminal C
-$ rosrun rosnodejs_sample listener.js
-```
 
 example2
 ```
-#terminal A
-$ roslaunch rosnodejs_sample node_sample.launch
+#terminal A (main server)
+$ roslaunch voice_visualizer node_sample.launch
 
 #terminal B
-$ roslaunch rosnodejs_sample sample_response.launch
+$ roslaunch voice_visualizer sample_response.launch
 ```
 
-open your web browser and run 
+open your web browser(http://localhost:3000) and run 
 ```
 #terminal C
 $ rostopic pub /chatter std_msgs/String "data: 'hello1'" -1
