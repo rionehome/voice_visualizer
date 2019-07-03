@@ -10,7 +10,6 @@ $ cd ~/catkin_ws && catkin_make
 
 ## run
 
-example2
 ```
 #terminal A (main server)
 $ roslaunch voice_visualizer node_sample.launch
