@@ -10,6 +10,8 @@ var http = require('http').Server(app);
 const io = require('socket.io')(http);
 const PORT = process.env.PORT || 3000;
 
+app.use(express.static(__dirname))
+
 rosnodejs.initNode('/listener_node')
     .then((rosNode) => {
       let sub = rosNode.subscribe('/sound_system/log/heard', std_msgs.String,
