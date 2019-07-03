@@ -12,13 +12,13 @@ const PORT = process.env.PORT || 3000;
 
 rosnodejs.initNode('/listener_node')
     .then((rosNode) => {
-      let sub = rosNode.subscribe('/chatter', std_msgs.String,
+      let sub = rosNode.subscribe('/sound_system/log/heard', std_msgs.String,
         (data) => {
           rosnodejs.log.info('I heard: [' + data.data + ']');
           io.emit('other-message', data.data);  // 送信
         }
       );
-      let sub2 = rosNode.subscribe('/response', std_msgs.String,
+      let sub2 = rosNode.subscribe('/sound_system/log/spoke', std_msgs.String,
         (data) => {
           rosnodejs.log.info('I spoke: [' + data.data + ']');
           io.emit('message', data.data);  // 送信
