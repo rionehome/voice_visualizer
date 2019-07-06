@@ -1,3 +1,4 @@
 <launch>
   <node pkg="voice_visualizer" type="app.js" name="sample_chat" output="screen" />
+  <node pkg="voice_visualizer" type="get_webpage.py" name="create_link" />
 </launch>
