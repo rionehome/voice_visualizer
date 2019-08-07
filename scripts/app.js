@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static(__dirname))
 
-rosnodejs.initNode('/listener_node')
+rosnodejs.initNode('/visualizer')
     .then((rosNode) => {
       let sub = rosNode.subscribe('/sound_system/log/heard', std_msgs.String,
         (data) => {

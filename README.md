@@ -23,3 +23,15 @@ open your web browser(http://localhost:3000) and run
 #terminal C
 $ rostopic pub /chatter std_msgs/String "data: 'hello1'" -1
 ```
+
+## Node
+**`name` /visualizer**
+
+### Subscribe Topic
+
+* **`/sound_system/log/heard`** 音声認識結果（ std_msgs/String ）
+
+* **`/sound_system/log/spoke`** 発話ログ ( std_msgs/String )
+
+
+### Publish Topic
