@@ -11,7 +11,7 @@
 
     <div>
       <form id="chatSend" action="">
-        <input id="msg-input" autocomplete="off"><button id="msg-btn">Send</button>
+        <input id="msg-input" autocomplete="off"><button id="msg-btn" type="submit">Send</button>
       </form>
     </div>
   </div>
@@ -23,8 +23,8 @@
       $(function () {
           var socket = io();
           $('form').submit(function(){
-              socket.emit('message', $('#chatText').val());
-              $('#chatText').val('');
+              socket.emit('message', $('#msg-input').val());
+              $('#msg-input').val('');
               return false;
           });
           socket.on('other-message', function(msg){

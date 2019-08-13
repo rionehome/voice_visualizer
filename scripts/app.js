@@ -27,8 +27,12 @@ rosnodejs.initNode('/visualizer')
         }
       );
 
-      io.on('connection',function(socket){
+      io.on('connection', (socket) => {
         console.log('connected');
+        socket.on('message', (msg) => {
+          console.log("from input: "+msg);
+          io.emit('message', msg);
+        });
       });
     
       http.listen(PORT, () => {

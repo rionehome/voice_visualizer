@@ -21,7 +21,7 @@ html input, body input {
   border: 0px;
   border-bottom: 2px solid white;
 }
-html input#user-name-input, body input#user-name-input {
+html input#msg-input, body input#msg-input {
   width: 200px;
   text-align: center;
 }
