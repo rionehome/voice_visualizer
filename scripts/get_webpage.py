@@ -14,7 +14,7 @@ rospy.init_node("create_link")
 address = os.environ["ROS_MASTER_URI"]
 add_sp = address.split(":")
 add_sp[-1] = "3000"
-page_link = ":".join(add_sp)
+page_link = "https://rione-final.serveo.net"
 print page_link
 
 img = qrcode.make(page_link)
