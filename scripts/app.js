@@ -30,7 +30,7 @@ rosnodejs.initNode('/visualizer')
         (data) => {
           rosnodejs.log.info('I spoke: [' + data.data + ']');
           var message_data = {
-            id: 'message',
+            id: 'other-message',
             msg_data: data.data
           }
           msg_history.push(message_data);
@@ -47,7 +47,7 @@ rosnodejs.initNode('/visualizer')
           order_msg.data = msg.msg_data;
           pub.publish(order_msg);
           
-          console.log("from input: "+msg);
+          console.log("from input: "+msg.msg_data);
           msg_history.push(msg);
           io.emit('message', msg);
         });
