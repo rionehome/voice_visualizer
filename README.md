@@ -5,7 +5,8 @@ this is a sample code for visualize result of voice recognition and response
 ```
 $ cd ~/catkin_ws/src
 $ git clone https://github.com/rionehome/voice_visualizer.git
-$ cd ~/catkin_ws && catkin_make
+$ cd ./voice_visualizer
+$ npm install
 ```
 
 ## run
@@ -13,15 +14,12 @@ $ cd ~/catkin_ws && catkin_make
 ```
 #terminal A (main server)
 $ roslaunch voice_visualizer node_sample.launch
-
-#terminal B
-$ roslaunch voice_visualizer sample_response.launch
 ```
 
 open your web browser(http://localhost:3000) and run 
 ```
 #terminal C
-$ rostopic pub /chatter std_msgs/String "data: 'hello1'" -1
+$ rostopic pub /sound_system/log/heard std_msgs/String "data: 'hello1'" -1
 ```
 
 ## Node
@@ -35,3 +33,4 @@ $ rostopic pub /chatter std_msgs/String "data: 'hello1'" -1
 
 
 ### Publish Topic
+* **`/order_input`** 手入力文字列（ std_msgs/String ）
