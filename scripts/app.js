@@ -37,12 +37,18 @@ rosnodejs.initNode('/visualizer')
           io.emit('message', message_data);  // 送信
         }
       );
+      let pub = rosNode.advertise('/order_input', std_msgs.String);
 
       io.on('connection', (socket) => {
         console.log('connected');
         io.emit('message_update', msg_history);
         socket.on('message', (msg) => {
+          const order_msg = new std_msgs.String();
+          order_msg.data = msg.msg_data;
+          pub.publish(order_msg);
+          
           console.log("from input: "+msg);
+          msg_history.push(msg);
           io.emit('message', msg);
         });
       });
