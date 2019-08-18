@@ -15,17 +15,6 @@ app.use(express.static(__dirname))
 var msg_history = [];
 rosnodejs.initNode('/visualizer')
     .then((rosNode) => {
-      let sub = rosNode.subscribe('/sound_system/log/heard', std_msgs.String,
-        (data) => {
-          rosnodejs.log.info('I heard: [' + data.data + ']');
-          var message_data = {
-            id: 'other-message',
-            msg_data: data.data
-          }
-          msg_history.push(message_data);
-          io.emit('message', message_data);  // 送信
-        }
-      );
       let sub2 = rosNode.subscribe('/sound_system/log/spoke', std_msgs.String,
         (data) => {
           rosnodejs.log.info('I spoke: [' + data.data + ']');
@@ -43,10 +32,12 @@ rosnodejs.initNode('/visualizer')
         console.log('connected');
         io.emit('message_update', msg_history);
         socket.on('message', (msg) => {
-          const order_msg = new std_msgs.String();
-          order_msg.data = msg.msg_data;
-          pub.publish(order_msg);
-          
+          console.log(msg.msg_data.indexOf("i want "))
+          if (msg.msg_data.indexOf("i want ") == 0){
+            const order_msg = new std_msgs.String();
+            order_msg.data = msg.msg_data;
+            pub.publish(order_msg);
+          }
           console.log("from input: "+msg.msg_data);
           msg_history.push(msg);
           io.emit('message', msg);

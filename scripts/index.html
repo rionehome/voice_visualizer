@@ -25,7 +25,7 @@
           $('form').submit(function(){
               var message_data = {
                   id: 'message',
-                  msg_data: "I want "+$('#msg-input').val()
+                  msg_data: $('#msg-input').val()
               }
               socket.emit('message', message_data);
               $('#msg-input').val('');
