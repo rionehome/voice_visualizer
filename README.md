@@ -1,6 +1,9 @@
 # voice visualizer
 this is a sample code for visualize result of voice recognition and response
 
+
+![Screenshot from 2019-07-04 12-01-46](https://user-images.githubusercontent.com/36945685/64902611-4da49f80-d6e5-11e9-9753-ca9d44842514.png)
+
 ## setup
 ```
 $ cd ~/catkin_ws/src
